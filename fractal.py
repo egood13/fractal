@@ -44,7 +44,7 @@ def create_array(width_length, height_length, x_limits, y_limits):
         row_vals = []
         for j in range(width_length):
             x = x_initial + (j*(x_final - x_initial)/width_length)
-            row_vals.append(iterate_z(200, complex(x, y), 0))
+            row_vals.append(iterate_z(50, complex(x, y), 0))
         fractal_array.append(row_vals)
 
     return(fractal_array)
@@ -58,7 +58,7 @@ def iterate_z(max_iterations, c, z=0):
         i += 1
         
     if abs(z) >= 2.0:
-        rgb = tuple(round(255*h) for h in colorsys.hsv_to_rgb(i/max_iterations,1-i/max_iterations,1.0))
+        rgb = tuple(round(255*h) for h in colorsys.hsv_to_rgb((240-(i/max_iterations)*80)/360,0.5,1.0))
         
     else: rgb = (0,0,0)
     return(rgb) # return magnitude of complex number
